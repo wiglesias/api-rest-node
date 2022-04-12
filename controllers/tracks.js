@@ -15,7 +15,20 @@ const getItems = async (req, res) => {
   }
 };
 
-const getItem = () => {};
+/**
+ * @param {*} req
+ * @param {*} res
+ */
+const getItem = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { id } = req;
+    const data = await tracksModel.findById(id);
+    res.send({ data });
+  } catch (error) {
+    handleHttpError(res, "ERROR_GET_ITEM");
+  }
+};
 
 /**
  * @param {*} req
