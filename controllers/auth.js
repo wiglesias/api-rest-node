@@ -3,7 +3,7 @@ const { encrypt } = require("../utils/handlePassword");
 const { usersModel } = require("../models");
 const { tokenSign } = require("../utils/handleJwt");
 
-const loginController = async (req, res) => {
+const registerController = async (req, res) => {
   req = matchedData(req);
   const password = await encrypt(req.password);
   const body = {...req, password};
@@ -18,4 +18,4 @@ const loginController = async (req, res) => {
   res.send({ data });
 };
 
-module.exports = { loginController }
+module.exports = { registerController }
