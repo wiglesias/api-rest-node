@@ -59,6 +59,20 @@ const updateItem = async (req, res) => {
   }
 };
 
-const deleteItem = () => {};
+/**
+ * @param {*} req
+ * @param {*} res
+ */
+const deleteItem = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { id } = req;
+    const data = await tracksModel.deleteOne({_id:id});
+
+    res.send({ data });
+  } catch (error) {
+    handleHttpError(res, "ERROR_DELETE_ITEM");
+  }
+};
 
 module.exports = { getItems, getItem, createItem, updateItem, deleteItem }
