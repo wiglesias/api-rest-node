@@ -25,7 +25,6 @@ const registerController = async (req, res) => {
 };
 
 const loginController = async (req, res) => {
-
   try {
     req = matchedData(req);
     const user = await usersModel.findOne({ email:req.email });
@@ -36,7 +35,7 @@ const loginController = async (req, res) => {
     }
 
     const hashPassword = user.get('password');
-    
+
     const check = await compare(req.password, hashPassword);
 
     if (!check) {
