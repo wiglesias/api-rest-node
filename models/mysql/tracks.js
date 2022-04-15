@@ -39,10 +39,6 @@ const Tracks = sequelize.define(
   }
 );
 
-/**
- * Implementando modelo personalizado
- */
-
 Tracks.findAllData = function () {
   Tracks.belongsTo(Storage, {
     foreignKey: "mediaId",
@@ -59,6 +55,4 @@ Tracks.findOneData = function (id) {
   return Tracks.findOne({ where: { id }, include: "audio" });
 };
 
-// Tracks.find = Tracks.findAll;
-// Tracks.findById = Tracks.findByPk;
 module.exports = Tracks;
